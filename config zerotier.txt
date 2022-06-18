@@ -29,3 +29,7 @@ Route between zerotier and Physical Networks
 
         ~:# apt install iptables-persistent
         ~:# bash -c iptables-save > /etc/iptables/rules.v4
+
+
+
+        =========================================================
