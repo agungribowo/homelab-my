@@ -1,0 +1,3 @@
+#config zerotier client
+~cara install pada armbian server,
+
