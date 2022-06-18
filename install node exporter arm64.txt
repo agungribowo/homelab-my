@@ -14,15 +14,46 @@ curl http://localhost:9100/metrics
 
 # if connection refused : "curl: (7) Failed to connect to localhost port 9100: Connection refused"
 
-1. option 1
-    cat /etc/services
-    grep -w 80/tcp /etc/services
-    grep -w 443/tcp /etc/services
-    egrep -w '(80|22|443)/tcp' /etc/services
+cp node_exporter-1.3.1.linux-arm64/node_exporter /usr/local/bin
+chown node_exporter:node_exporter /usr/local/bin/node_exporter
 
 
-2. option 2
-    sudo netstat -tulpn
-    sudo netstat -tulpn | more
-    sudo netstat -tulpn | grep ':port'
-    sudo netstat -tulpn | grep ':9100'
+nano /etc/systemd/system/node_exporter.service
+
+# for kill port if another in use
+fuser -k 9100/tcp 
+
+
+####### setup install node-exporter for stb HG680 with Armbian linux arm64 #######
+curl -LO https://github.com/prometheus/node_exporter/releases/download/v1.3.1/node_exporter-1.3.1.linux-arm64.tar.gz
+tar xzvf node_exporter-1.3.1.linux-arm64.tar.gz
+
+cp node_exporter-1.3.1.linux-arm64/node_exporter /usr/local/bin
+chown node_exporter:node_exporter /usr/local/bin/node_exporter
+
+
+nano /etc/systemd/system/node_exporter.service
+
+~ Isi dari file node_exporter.service.
+
+[Unit]
+Description=Node Exporter
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+
+[Install]
+WantedBy=multi-user.target  
+
+#start node-exporter
+systemctl daemon-reload
+systemctl enable node_exporter
+systemctl start node_exporter
+systemctl status node_exporter
+
+

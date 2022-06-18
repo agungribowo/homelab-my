@@ -1,0 +1,15 @@
+curl -LO https://github.com/prometheus/prometheus/releases/download/v2.36.1/prometheus-2.36.1.linux-arm64.tar.gz
+tar xzvf prometheus-2.36.1.linux-arm64.tar.gz 
+
+prometheus-2.36.1.linux-arm64.tar.gz
+
+cp prometheus-2.36.1.linux-arm64/prometheus /usr/local/bin
+cp prometheus-2.36.1.linux-arm64/promtool /usr/local/bin
+
+
+chown prometheus:prometheus /usr/local/bin/prometheus
+chown prometheus:prometheus /usr/local/bin/promtool
+
+
+cp -r prometheus-2.36.1.linux-arm64/consoles /etc/prometheus
+cp -r prometheus-2.36.1.linux-arm64/console_libraries /etc/prometheus
