@@ -1,0 +1,79 @@
+Every processor in the machine needs an amount of data capacity to run and store loaded applications. All the PCs are designed to have primary and secondary memories from where programs can run, and information is being stored while executing.
+You need to think about storage seriously if you belong to IT or working as a computer scientist. In that case, bundles of software packages are required to work on.
+
+There could be many issues related to storage capacity in Linux systems to run applications; you need adequate RAM; otherwise, the application will crash.
+
+The Swap in the Linux system helps when RAM is about to exhaust. While working with multiple applications, if RAM fills up and there is no space to function, the system starts utilizing the secondary storage where Swap is located.
+
+The access time of swap space is less than the system physical memory. When running applications stopped working because of insufficient space in RAM, inactive pages are forced to move towards swap space. If you’re using the video editor tools or memory-consuming applications, it would be good to use swap space.
+
+Now, the question may arise in your mind that how much swap space is required for a particular RAM. Do not worry about it; a guide table is mentioned here:
+
+System RAM	Recommended Swap Space
+
+Less than 2 GB	2 x RAM
+2 GB – 8 GB	1 x RAM
+8 GB – 64 GB	0.5 x RAM
+More than 64 GB	Depend on workload
+For Centos and Redhat, the recommendation would be:
+
+System RAM	Recommended Swap Space
+Less than 2 GB	2 x RAM
+2 GB – 8 GB	1 x RAM
+8 GB – 64 GB	Min 4 GB
+More than 64 GB	Min 4 GB
+And for the Ubuntu system, the recommendation is somehow little changed:
+
+System RAM	Recommended Swap Space
+Less than 1 GB	Swap >= RAM < 2xRAM
+Greater than 1 GB	Swap >= square root of RAM (but) Swap < 2xRAM
+How to Increase Swap Space In Linux
+To increase swap space in the Linux system, we first need to check if swap space is enabled.
+
+To check it, type in the terminal:
+
+$ sudo swapon --show
+
+If you didn’t get any output, it means your system doesn’t have swap space available at the moment.
+
+There is another way to check the memory and swap space information i-e using the “free -h” command.
+
+$ free -h
+
+In my case, RAM is less than 2 GB, so the allocated swap space memory would be around 1 GB (as we have mentioned in the recommended cases above).
+
+(Note that all of the below-mentioned commands required sudo privileges to make changes).
+
+In the terminal, write down the command to increase swap space:
+
+$ sudo dd if=/dev/zero of=/swap_file bs=1GB count=1
+
+You can set the value of bs and count according to the requirement.
+
+
+Now, set the permission access for the users as 600 so users couldn’t be able to read important data from the swap_file:
+
+$ sudo chmod 600 /swap_file
+
+To enable the swap area on the file “swap_file,” use the “mkswap” command utility:
+
+$ sudo mkswap /swap_file
+
+The next step is to enable the swap file “swap_file” using the command:
+
+$ sudo swapon /swap_file
+
+Run the “free -h” command to check if swap space has increased:
+
+$ free –h
+
+So, when we checked before, the swap space was 923 MB. And now it has been updated to 1.8 GB.
+
+Conclusion:
+While using the system, every processor requires memory to run tons of packages and tools. There is always allocated memory in the system, i-e, RAM, but sometimes it is not enough for multiple applications to run simultaneously.
+
+In a Linux system, swap space is located in the system as secondary memory. When RAM is exhausted, swap space helps to run applications in it.
+
+We allocate swap size during the installation process of Linux distribution. But it can be changed later according to requirement.
+
+The guide has shown how we can increase swap space in Linux Distributions.
