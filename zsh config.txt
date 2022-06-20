@@ -1,0 +1,120 @@
+https://chamikakasun.medium.com/iterm2-zsh-oh-my-zsh-the-most-power-full-terminal-on-macos-2021-guide-macos-big-sur-5bb498976dc9
+
+iTerm2 + zsh + oh-my-zsh The Most Power Full Terminal on macOS (2021 Guide + macOS Big Sur)
+
+Recently I had to switch to a new mac book pro, Then I had to install every tool from the beginning which I was using in the previous mac book pro. So I thought of bringing series of medium articles which might be helpful for any developer to set up their own development environment without a hassle. In this article, I'm going to describe how to set up this awesome terminal tool iterm2 with Z shell and Oh My Zsh Framework.
+
+If you ever wonder why you need to install the iTerm2 terminal, then you can have a look available feature here.
+
+Okay, without wasting more time let’s first install iTerm2, go to downloads, And download iTerm2. Then there you will be prompt to download a .zip file. Then you extract the zip file and move the iTerm2 application to your system application folder as follows.
+
+
+Extract the .Zip file
+
+Move to Applications
+I hope you were able to install the iTerm2 successfully.
+
+The next thing would be installing the zsh. usually, OS X comes preloaded with zsh. You can check its version by writing zsh --version , If it is available you will see an output as follows, In my case, it is already available. If you don’t see an output similar to don’t worry you can install using the brew .
+
+
+Checking the zsh version
+So if you don’t get an output as above, you can install the zsh as follows using brew
+
+brew install zsh
+Perfect!, Now you have installed two of the required tools, Next step is to install the Oh My Zsh framework, which is an open-source, community-driven framework for managing your Zsh configuration.
+
+For that, you can either visit their official documentation and follow their steps, or you can just copy, paste, and hit enter the following command into your terminal :
+
+Using curl:
+
+$ sh -c “$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+or Using wget:
+
+sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+I’m using curl command and output is as follows:
+
+
+Awesome! You did it, Now you have installed all the required tools to use this awesome iterm2 shell. Next, let’s try to install some plugins to beautify the dev setup.
+
+Installing Powerlevel10k theme.
+i). Install the recommended font. Optional but highly recommended.
+
+ii). Install Powerlevel10k for your plugin manager for Oh My Zsh
+
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+Then edit the “.zshrc” file to indicate a new theme as follows
+
+nano ~/.zshrc
+
+Then save the file and restart the Zsh. Then the terminal you see would be quite similar to what you see below.
+
+
+After installing the theme
+After the restart, it will prompt a questionnaire to install additional configurations to make everything look elegant. You have to just follow the instructions as you go, If the prompt is not available after the restart you can manually trigger it using the following command. Then you can configure the look and feel as you want.
+
+p10k configure
+
+p10k configure prompt
+Changing the look and feel method 1 :
+
+Further, if you are interested in changing the terminal colors you can follow this article. And this will be the correct place you are looking at when you want to update those configurations.
+
+Changing the look and feel method 2:
+
+If you feel updating the above configurations is too complicated, You can updates the colors from the GUI as well. For that move your cursor to iTerm Preferences as follows:
+
+
+Then select “Profile” and then select “Colors” in the Subheaders as follows:
+
+
+Here you can customize your terminal as you want. Especially you might want to change the Background color, In my case, I updated few ANSI Colors as well in addition to Background and Selection.
+
+
+Changing the look and feel method 3:
+
+If you think, you are not good at the above method 2; Then you can choose to have a community configured theme for you. Here you can find few open source themes for iTerm2.
+
+Here are the two of most popular themes if you need:
+
+Solarized Dark theme (patched version to fix the bright black value)
+Solarized Light theme
+You download any of the theme files and simply import theme to your iTerm profile as follows:
+
+
+2. Installing Autosuggessions
+
+i). Clone this repository into $ZSH_CUSTOM/plugins (by default ~/.oh-my-zsh/custom/plugins)
+
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+ii). Add the plugin to the list of plugins for Oh My Zsh to load (inside ~/.zshrc):
+
+plugins=(zsh-autosuggestions)
+if you have existing plugings :
+plugins=(git zsh-autosuggestions)
+
+iii). ReStart a new terminal session. Now when you type commands as follows you can see the auto-completion of the commands you type, if you have used them previously.
+
+
+Auto-completion of command
+If you are looking for more plunging you can see in this documentation for that.
+
+2. Installing Syntax Highlighting
+
+This package provides syntax highlighting for the shell zsh. It enables the highlighting of commands whilst they are typed at a zsh prompt into an interactive terminal.
+
+Simply clone this repository and source the script:
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+Then, enable syntax highlighting in the current interactive shell:
+
+source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+Now you are ready to use the syntax highlighting features, If all worked well, as you type keywords you will see the syntax is highlighted with different colors as follows:
+
+
+Correct syntax highlighting
+If you face any issues installing the feature, you can check up-to-date documentation of this here.
+
+Hope I have covered everything for installing the iTerm2 + zsh + oh-my-zsh into your Mac. Have fun!
+
+Also, you can look at the following articles for managing multiple versions of java, node, and python in Mac OS.
