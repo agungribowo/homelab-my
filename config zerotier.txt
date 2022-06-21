@@ -18,7 +18,7 @@ Route between zerotier and Physical Networks
     a. [Modify Physical Network interface name, zerotier interface name.]
 
         ~:# PHY_IFACE=eth0
-        ~:# ZT_IFACE=zt44xaj2wx     (ZeroTier address who saved on device)
+        ~:# ZT_IFACE=bdc1b49e4a   (ZeroTier address who saved on device)
 
     b. [Add rules to iptables]
 
