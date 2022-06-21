@@ -1,6 +1,9 @@
 #config zerotier client
 ~cara install pada armbian server,
 
+link download zerotier :
+curl -s https://install.zerotier.com | sudo bash
+
 #ubuntu
 apt update && apt upgrade
 
