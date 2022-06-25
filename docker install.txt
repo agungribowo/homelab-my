@@ -1,0 +1,48 @@
+Installing Docker
+
+First add the required dependencies and the security key:
+
+sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
+Add Docker’s official GPG key:
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+Make sure that the key fingerprint is 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88:
+
+sudo apt-key fingerprint 0EBFCD88
+Add the Docker repository corresponding to your CPU architecture and Operating System version (arch=arm64):
+
+sudo add-apt-repository "deb [arch=arm64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+If instead of a 64 bits OS, you want the 32 bits version (also covered by Raspberry Pi 4), you should change the reference to the architecture **in the previous command to [arch=armhf].
+
+Finally update the repository sources:
+
+sudo apt-get update
+Also guarantee that you are about to install from the official Docker repository, instead of the default Ubuntu repo:
+
+apt-cache policy docker-ce
+
+
+We have finished setting up the repository!!
+
+Then install Docker:
+
+sudo apt-get -y install docker-ce
+Check version
+
+sudo docker -v
+Add your user to docker group:
+
+sudo usermod -aG docker ${USER}
+So that this change takes effect you have log out and log in again.
+
+Installing Docker Compose
+
+This component **is avaible as a Python package that makes very easy its installation. First install the Python package manager:
+
+sudo apt install python3-pip
+Then install Docker Compose:
+
+sudo pip3 install docker-compose
+
+
+link web : https://blog.rylander.io/2020/12/23/setting-up-docker-on-ubuntu-20-04-focal-arm64/
