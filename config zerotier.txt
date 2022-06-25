@@ -33,6 +33,8 @@ Route between zerotier and Physical Networks
         ~:# apt install iptables-persistent
         ~:# bash -c iptables-save > /etc/iptables/rules.v4
 
+sudo apt-get install docker-ce=5:20.10.17~3-0~ubuntu-focal docker-ce-cli=5:20.10.17~3-0~ubuntu-focal containerd.io docker-compose-plugin
 
 
+sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-compose-plugin
         =========================================================
