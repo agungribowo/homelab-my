@@ -1,0 +1,8 @@
+install node js with NVM
+https://www.hackerxone.com/2021/10/21/steps-to-install-nvm-node-on-with-examples-ubuntu-20-04-lts/
+
+
+config Apacher webserver 
+with docker 
+https://adamtheautomator.com/apache-docker/
+
