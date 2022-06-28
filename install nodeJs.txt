@@ -10,3 +10,13 @@ https://adamtheautomator.com/apache-docker/
 
 tutorial install apache2 lamp stak2 ubuntu 
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-20-04-id
+
+jika terjadi erro ketika install gettext pada php7.4
+apt-get install php7.4-gettext
+
+referensi : 
+https://lebakcyber.net/mengatasi-unable-to-locate-package-php-gettext/
+
+for install & setup PhpMyadmin
+https://www.hostinger.com/tutorials/how-to-install-and-setup-phpmyadmin-on-ubuntu
+
